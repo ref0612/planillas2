@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor Planillas - Optimizado 80mm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="control-bar no-print">
+        <div class="selector-group">
+            <label for="reportSelector">Seleccionar Planilla:</label>
+            <select id="reportSelector">
+                <option value="listado">Listado de Pasajeros</option>
+                <option value="diagrama">Diagrama de Pasajes</option>
+            </select>
+        </div>
+        <button class="print-btn" onclick="window.print()">🖨️ Imprimir (80mm)</button>
+    </div>
+
+    <div class="main-container">
+        <div id="printArea" class="print-canvas">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
