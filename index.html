@@ -12,10 +12,11 @@
             <label for="reportSelector">Seleccionar Planilla:</label>
             <select id="reportSelector">
                 <option value="listado">Listado de Pasajeros</option>
+                <option value="listado_equipaje">Listado de Pasajeros para Equipaje</option>
                 <option value="diagrama">Diagrama de Pasajes</option>
             </select>
         </div>
-        <button class="print-btn" onclick="window.print()">🖨️ Imprimir (80mm)</button>
+        <button class="print-btn" onclick="handleConfirmAndPrint()">🖨️ Imprimir (80mm)</button>
     </div>
 
     <div class="main-container">

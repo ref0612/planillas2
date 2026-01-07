@@ -59,7 +59,9 @@ select {
 @media print {
     @page {
         size: 80mm auto;
-        margin: 0mm; /* Eliminamos margen de hardware aquí, lo controlamos manualmente */
+        /* Solicitar margen izquierdo de 2mm en impresión. Nota: el impresor/driver
+           puede ignorar valores inferiores a su mínima zona imprimible. */
+        margin: 2mm 0mm 2mm 2mm;
     }
 
     html, body {
@@ -73,10 +75,12 @@ select {
     /* Contenedor maestro: Forzamos 70mm para dejar margen de seguridad adicional
        y compensar diferencias entre motores de impresión. */
     .print-canvas {
-        width: 70mm !important;
-        max-width: 70mm !important;
-        margin: 0 auto !important; /* Centrado en el papel de 80mm */
-        padding: 0.4mm 0 !important;
+        /* Aumentado para ocupar más del ancho imprimible y evitar aspecto achicado */
+        width: 76mm !important;
+        max-width: 76mm !important;
+        margin-left: auto !important;
+        margin-right: auto !important; /* Forzar centrado en la página */
+        padding: 0.4mm 1mm !important; /* ligero padding horizontal para separación */
         box-shadow: none !important;
         overflow: hidden !important;
     }
@@ -95,7 +99,20 @@ select {
         width: 100% !important;
         border-collapse: collapse !important;
         table-layout: fixed !important; /* OBLIGATORIO para respetar anchos */
+        margin: 0 auto !important; /* asegurar centrado horizontal */
     }
+
+    /* Final enforcement: identical borders/paddings for thead and tbody cells */
+    .table-listado-equipaje, .table-listado-equipaje thead, .table-listado-equipaje tbody { box-sizing: border-box !important; }
+    .table-listado-equipaje thead th, .table-listado-equipaje tbody td {
+        padding: 0.18mm !important;
+        box-sizing: border-box !important;
+        border: 0.4px solid #000 !important;
+    }
+
+    /* Prevent header borders from visually extending beyond body due to collapse differences */
+    .table-listado-equipaje thead th { border-bottom-width: 0.4px !important; }
+    .table-listado-equipaje tbody td { border-top-width: 0.4px !important; }
 
     th, td {
         vertical-align: top;
@@ -105,6 +122,129 @@ select {
         word-break: break-word !important; /* Romper palabras si es necesario */
         white-space: normal !important;   /* Permitir múltiples líneas donde haga falta */
     }
+
+/* ---------- Exact layout for listado_equipaje (screen + print) ---------- */
+.table-listado-equipaje {
+    font-size: 9px;
+    width: 78mm !important;
+    max-width: 78mm !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+}
+
+.table-listado-equipaje th, .table-listado-equipaje td {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    vertical-align: middle !important;
+}
+
+/* Column widths exactly as requested: sum = 78mm */
+.table-listado-equipaje th:nth-child(1), .table-listado-equipaje td:nth-child(1) { width: 4mm !important; text-align: center; }
+.table-listado-equipaje th:nth-child(2), .table-listado-equipaje td:nth-child(2) { width: 18mm !important; }
+.table-listado-equipaje th:nth-child(3), .table-listado-equipaje td:nth-child(3) { width: 13mm !important; }
+.table-listado-equipaje th:nth-child(4), .table-listado-equipaje td:nth-child(4) { width: 13mm !important; }
+.table-listado-equipaje th:nth-child(5), .table-listado-equipaje td:nth-child(5) { width: 30mm !important; }
+
+/* Row height fixed for printing and preview */
+.table-listado-equipaje tbody tr { height: 20mm !important; min-height: 20mm !important; }
+.table-listado-equipaje tbody td { height: 20mm !important; min-height: 20mm !important; }
+
+/* Equipaje box exact size */
+.equipaje-cell {
+    width: 30mm !important;
+    height: 20mm !important;
+    box-sizing: border-box !important;
+    border: 0.4px solid #000 !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media print {
+    .table-listado-equipaje { width: 78mm !important; }
+    /* Print-only override: Nombre column reduced to 14mm as requested */
+    .table-listado-equipaje th:nth-child(2), .table-listado-equipaje td:nth-child(2) { width: 14mm !important; }
+    /* Print-only override: ID column reduced to 14mm as requested */
+    .table-listado-equipaje th:nth-child(3), .table-listado-equipaje td:nth-child(3) { width: 14mm !important; }
+    .table-listado-equipaje th, .table-listado-equipaje td { padding: 0 !important; }
+    .table-listado-equipaje tbody tr, .table-listado-equipaje tbody td { height: 20mm !important; min-height: 20mm !important; }
+    .equipaje-cell { width: 30mm !important; height: 20mm !important; }
+}
+
+/* Try to reduce left non-printable area by asking the page margin to be 2mm.
+   Remove transform-based shifting (it was ineffective); instead we rely on
+   `@page` plus zero left body margin so the browser can place content nearer.
+   If the printer driver enforces a larger non-printable margin, this cannot
+   be overridden by CSS — only the driver/settings allow smaller hardware margins. */
+@media print {
+    /* Ensure the canvas uses the requested page margins and no extra offsets */
+    .print-canvas {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        width: 78mm !important;
+    }
+}
+
+/* Print override: replace nested borders with single-line grid for clarity */
+@media print {
+    /* Use separate borders and zero spacing to avoid border-collapse doubling */
+    .table-listado-equipaje {
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        width: 78mm !important;
+        table-layout: fixed !important;
+    }
+
+    /* Remove all default cell borders, we'll draw single lines via specific rules */
+    .table-listado-equipaje th,
+    .table-listado-equipaje td {
+        border: none !important;
+        padding: 0.6mm 0.5mm !important;
+        vertical-align: middle !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Horizontal separator: single line under each row (drawn on tds) */
+    .table-listado-equipaje tbody td {
+        border-bottom: 0.4px solid #000 !important;
+    }
+
+    /* Vertical separators between columns (single line) */
+    .table-listado-equipaje td:not(:last-child),
+    .table-listado-equipaje th:not(:last-child) {
+        border-right: 0.4px solid #000 !important;
+    }
+
+    /* Remove separators inside the equipaje cell so its own box is the only border */
+    .table-listado-equipaje td:nth-child(5) {
+        border-right: none !important;
+        border-bottom: none !important; /* the equipaje box has its own bottom border */
+        padding: 0 !important;
+    }
+
+    /* Equipaje box remains single bordered */
+    .table-listado-equipaje td:nth-child(5) .equipaje-cell {
+        border: 0.4px solid #000 !important;
+        width: 30mm !important;
+        height: 20mm !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+
+    /* Header underline only */
+    .table-listado-equipaje thead th {
+        border-bottom: 0.8px solid #000 !important;
+    }
+
+    /* Last row: ensure bottom border is present across full width */
+    .table-listado-equipaje tbody tr:last-child td {
+        border-bottom: 0.4px solid #000 !important;
+    }
+}
+
+/* Aggresive block removed per user request (reverted). */
 
     .table-bordered th, .table-bordered td {
         border: 0.4px solid #000 !important; /* Bordes aún más finos para ganar ancho */
@@ -141,4 +281,5 @@ select {
     /* Ajustes para pies de tabla y resúmenes */
     tfoot td { border-top: 1px double black !important; font-size: 11px !important; padding-top: 2px !important; }
     .summary-table td { padding: 1px 2px !important; }
-}
+    /* Ajustes para pies de tabla y resúmenes (continuación) */
+    /* Se han eliminado las reglas específicas de 'listado_equipaje' para iniciar desde cero. */

@@ -125,6 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `,
 
+        
+
         // =================================================================
         // REPORTE 2: DIAGRAMA DE PASAJES (Columnas separadas Origen/Destino)
         // =================================================================
@@ -297,9 +299,57 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function loadReport(type) {
+        // If the equipaje report is requested, derive it from the base `listado`
+        if (type === 'listado_equipaje') {
+            // Render the original listado first
+            printArea.innerHTML = REPORTS['listado'];
+
+            // Swap the table class to a dedicated one for equipaje-specific styling
+            const tbl = printArea.querySelector('.table-listado');
+            if (tbl) {
+                tbl.classList.remove('table-listado');
+                tbl.classList.add('table-listado-equipaje');
+            }
+
+            // For each body row, replace the 5th cell content with an equipaje box
+            const rows = printArea.querySelectorAll('.table-listado-equipaje tbody tr');
+            rows.forEach(r => {
+                const td = r.querySelector('td:nth-child(5)');
+                if (td) td.innerHTML = '<div class="equipaje-cell"></div>';
+            });
+
+            // Then normalize IDs as usual
+            normalizeIds();
+            return;
+        }
+
+        // Default behavior: render requested report
         printArea.innerHTML = REPORTS[type];
+        // Normalizar IDs en cualquier tabla de listado (quitar puntos)
+        normalizeIds();
+    }
+
+    // Quita los puntos de formato en las celdas de ID (columna 3) para tablas
+    // de clase `table-listado` y `table-listado-equipaje`. Mantiene guiones y letras.
+    function normalizeIds() {
+        const selectors = ['.table-listado tbody td:nth-child(3)', '.table-listado-equipaje tbody td:nth-child(3)'];
+        selectors.forEach(sel => {
+            const cells = printArea.querySelectorAll(sel);
+            cells.forEach(td => {
+                // Conserva el contenido pero elimina todos los puntos '.'
+                const raw = td.textContent || '';
+                const normalized = raw.replace(/\./g, '').replace(/\s+/g, ' ').trim();
+                td.textContent = normalized;
+            });
+        });
     }
 
     reportSelector.addEventListener('change', (e) => loadReport(e.target.value));
     loadReport(reportSelector.value); // Carga inicial
+
+    // Print handler: open browser print dialog (no local print agent)
+    // Simple print handler: open browser print dialog (no local print agent)
+    window.handleConfirmAndPrint = function() {
+        window.print();
+    };
 });
