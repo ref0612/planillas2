@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const REPORTS = {
         // =================================================================
-        // REPORTE 1: LISTADO DE PASAJEROS (Completo con todas las columnas)
+        // REPORTE 1: LISTADO DE PASAJEROS
         // =================================================================
         listado: `
             <div class="report-body">
                 <table style="width: 100%; margin-bottom: 5px;">
                     <tr><td align="center"><img alt="logo" class="print-logo" src="https://ts-reports-development.s3.amazonaws.com/uploads/0cba3dd5-766e-4184-8fd4-a474082b60e8/logo-3e4a4eaa3c64dcae62994c72ef3eed4da840a29c82a10fb1f0bf5a4ee52d7e88.jpg"></td></tr>
                 </table>
-                <table style="width: 100%; margin-bottom: 10px;">
+                <table style="width: 100%; margin-bottom: 8px;">
                     <tr><td align="right" class="fw-bold" style="width:35%">Fecha:</td><td>10/11/2025</td></tr>
                     <tr><td align="right" class="fw-bold">Servicio:</td><td>VAL-OVA-SER-VLL-ANT-CAL 08:30</td></tr>
                     <tr><td align="right" class="fw-bold">Bus:</td><td></td></tr>
@@ -24,16 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     <tr><td align="right" class="fw-bold">Auxiliar:</td><td></td></tr>
                 </table>
 
-                <div class="fw-bold bg-gray" style="padding: 2px; border: 1px solid #000; border-bottom: none;">Cuadro de reservas</div>
-                <!-- table-listado: estilos específicos para el listado de pasajeros -->
-                <table class="table-bordered table-listado" style="width: 100%; font-size: 9px;">
+                <div class="fw-bold" style="padding: 2px; border: 1px solid #000; border-bottom: none;">Cuadro de reservas</div>
+                <table class="table-bordered table-listado" style="width: 100%;">
                     <thead>
-                        <tr class="bg-gray">
-                            <th style="width:8%">No</th>
-                            <th style="width:35%">Nombre</th>
-                            <th style="width:25%">ID</th>
-                            <th style="width:20%">Teléfono</th>
-                            <th style="width:12%">Equipaje</th>
+                        <tr>
+                            <th>No</th>
+                            <th>Nombre</th>
+                            <th>ID</th>
+                            <th>Teléfono</th>
+                            <th>Equipaje</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,36 +104,43 @@ document.addEventListener("DOMContentLoaded", () => {
                     </tbody>
                 </table>
 
-                <div style="margin-top: 15px;">
-                    <div class="fw-bold" style="border-bottom: 1px solid black; margin-bottom: 5px;">Puntos de embarque:</div>
-                    <div style="margin-bottom: 4px;"><b>T. Rodoviario Valparaiso (08:30 AM):</b> 12 pax (32, 33, 35, 36, 38, 39, 40, 11, 13, 16, 19, 31)</div>
-                    <div style="margin-bottom: 4px;"><b>T. Rodoviario Viña del Mar (09:10 AM):</b> 18 pax (34, 37, 41, 42, 3, 4, 6, 8, 14, 15, 18, 20, 21, 22, 23, 24, 25, 26)</div>
-                    <div style="margin-bottom: 4px;"><b>Paradero La Palma Ruta 60 (09:40 AM):</b> 0 pax</div>
-                    <div style="margin-bottom: 4px;"><b>La Calera Sopraval Ruta 5 (09:50 AM):</b> 1 pax (7)</div>
-                    <div style="margin-bottom: 4px;"><b>Petrobras Ruta 5 (11:30 AM):</b> 0 pax</div>
-                    <div style="margin-bottom: 4px;"><b>Terminal Ovalle (01:40 PM):</b> 9 pax (2, 3, 5, 10, 12, 13, 27, 29, 30)</div>
-                    <div style="margin-bottom: 4px;"><b>T. La Serena (03:10 PM):</b> 16 pax (32, 33, 35, 36, 38, 39, 40, 42, 43, 1, 3, 10, 17, 21, 24, 28)</div>
-                    <div style="margin-bottom: 4px;"><b>Terminal de Vallenar (05:40 PM):</b> 7 pax (35, 38, 40, 9, 12, 23, 25)</div>
-                    <div style="margin-bottom: 4px;"><b>Terminal de Antofagasta (02:30 AM):</b> 2 pax (3, 8)</div>
-                    <div style="margin-bottom: 4px;"><b>Sierra Gorda S. Allende 601 (04:30 AM):</b> 0 pax</div>
+                <div style="margin-top: 12px;">
+                    <div class="fw-bold" style="border-bottom: 1px solid black; margin-bottom: 4px;">Puntos de embarque:</div>
+                    <div style="margin-bottom: 3px;"><b>T. Valparaiso (08:30 AM):</b> 12 pax (32, 33, 35, 36, 38, 39, 40, 11, 13, 16, 19, 31)</div>
+                    <div style="margin-bottom: 3px;"><b>T. Viña del Mar (09:10 AM):</b> 18 pax (34, 37, 41, 42, 3, 4, 6, 8, 14, 15, 18, 20, 21, 22, 23, 24, 25, 26)</div>
+                    <div style="margin-bottom: 3px;"><b>Paradero La Palma Ruta 60 (09:40 AM):</b> 0 pax</div>
+                    <div style="margin-bottom: 3px;"><b>La Calera Sopraval Ruta 5 (09:50 AM):</b> 1 pax (7)</div>
+                    <div style="margin-bottom: 3px;"><b>Petrobras Ruta 5 (11:30 AM):</b> 0 pax</div>
+                    <div style="margin-bottom: 3px;"><b>Terminal Ovalle (01:40 PM):</b> 9 pax (2, 3, 5, 10, 12, 13, 27, 29, 30)</div>
+                    <div style="margin-bottom: 3px;"><b>T. La Serena (03:10 PM):</b> 16 pax (32, 33, 35, 36, 38, 39, 40, 42, 43, 1, 3, 10, 17, 21, 24, 28)</div>
+                    <div style="margin-bottom: 3px;"><b>Terminal Vallenar (05:40 PM):</b> 7 pax (35, 38, 40, 9, 12, 23, 25)</div>
+                    <div style="margin-bottom: 3px;"><b>Terminal Antofagasta (02:30 AM):</b> 2 pax (3, 8)</div>
+                    <div style="margin-bottom: 3px;"><b>Sierra Gorda S. Allende 601 (04:30 AM):</b> 0 pax</div>
                 </div>
-                
-                <div style="margin-top: 20px; text-align: right; font-style: italic; font-size: 9px;">
+
+                <div style="margin-top: 15px; text-align: right; font-style: italic;">
                     Impreso por: owner 10/11/2025 03:05 PM
                 </div>
             </div>
         `,
 
         // =================================================================
-        // REPORTE 2: DIAGRAMA DE PASAJES (Columnas separadas Origen/Destino)
+        // REPORTE 2: DIAGRAMA DE PASAJES
+        // Embarques abreviados para evitar wrap en columna de 19mm:
+        //   "Terminal Ovalle"    → "Ovalle"
+        //   "T. Viña del Mar"   → "T. Viña del Mar"   (15mm, borderline)
+        //   "T. Antofagasta"    → "T. Antofag."
+        //   "Terminal Vallenar" → "T. Vallenar"
+        //   "La Calera Ruta 5"  → "La Calera R.5"
+        //   "Sierra Gorda"      → "Sierra Gorda"
         // =================================================================
         diagrama: `
-             <div class="report-body">
+            <div class="report-body">
                 <table style="width: 100%; margin-bottom: 5px;">
                     <tr><td align="center"><img alt="logo" class="print-logo" src="https://ts-reports-development.s3.amazonaws.com/uploads/0cba3dd5-766e-4184-8fd4-a474082b60e8/logo-3e4a4eaa3c64dcae62994c72ef3eed4da840a29c82a10fb1f0bf5a4ee52d7e88.jpg"></td></tr>
                 </table>
-                
-                <table style="width: 100%; margin-bottom: 10px;">
+
+                <table style="width: 100%; margin-bottom: 8px;">
                     <tr><td align="right" class="fw-bold" style="width:35%">Fecha:</td><td>10/11/2025</td></tr>
                     <tr><td align="right" class="fw-bold">Servicio:</td><td>VAL-OVA-SER-VLL-ANT-CAL 08:30</td></tr>
                     <tr><td align="right" class="fw-bold">Bus:</td><td></td></tr>
@@ -145,84 +151,83 @@ document.addEventListener("DOMContentLoaded", () => {
                     <tr><td align="right" class="fw-bold">Vendidos:</td><td>65 (43)</td></tr>
                 </table>
 
-                <div class="fw-bold bg-gray" style="padding: 2px; border: 1px solid #000; border-bottom: none;">Receptor</div>
-                <!-- table-diagram: ancho de columnas personalizado para impresoras 80mm -->
-                <table class="table-bordered table-diagram" style="width: 100%; font-size: 9px;">
+                <div class="fw-bold" style="padding: 2px; border: 1px solid #000; border-bottom: none;">Receptor</div>
+                <table class="table-bordered table-diagram" style="width: 100%;">
                     <thead>
-                        <tr class="bg-gray">
-                            <th style="width:8%">No</th>
-                            <th style="width:22%">Boleto</th>
-                            <th style="width:25%">Embarque</th>
-                            <th style="width:25%">Destino</th>
-                            <th style="width:20%" align="center">Valor</th>
+                        <tr>
+                            <th>No</th>
+                            <th>Boleto</th>
+                            <th>Embarque</th>
+                            <th>Destino</th>
+                            <th>Valor</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td>KP174944-1</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>2</td><td>1631516-2</td><td>Terminal Ovalle</td><td>Antofagasta</td><td align="center">$35.000</td></tr>
-                        <tr><td>3</td><td>KP180945-3</td><td>Terminal Ovalle</td><td>La Serena</td><td align="center">$4.661</td></tr>
-                        <tr><td>3</td><td>KP180768-3</td><td>T. Viña del Mar</td><td>Ovalle</td><td align="center">$17.980</td></tr>
-                        <tr><td>3</td><td>KP180500-3</td><td>T. Antofagasta</td><td>Calama</td><td align="center">$9.513</td></tr>
-                        <tr><td>3</td><td>1611972-3</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.000</td></tr>
-                        <tr><td>4</td><td>KP170749-4</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>5</td><td>KP177285-5</td><td>Terminal Ovalle</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>6</td><td>KP181203-6</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>7</td><td>KP176325-7</td><td>La Calera Ruta 5</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>8</td><td>KP181068-8</td><td>T. Antofagasta</td><td>Calama</td><td align="center">$9.513</td></tr>
-                        <tr><td>8</td><td>KP177814-8</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>9</td><td>KP176414-9</td><td>Terminal Vallenar</td><td>Antofagasta</td><td align="center">$33.200</td></tr>
-                        <tr><td>10</td><td>KP142097-10</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>10</td><td>KP181214-10</td><td>Terminal Ovalle</td><td>La Serena</td><td align="center">$4.661</td></tr>
-                        <tr><td>11</td><td>KP178119-11</td><td>T. Valparaiso</td><td>Sierra Gorda</td><td align="center">$45.670</td></tr>
-                        <tr><td>12</td><td>KP181395-12</td><td>Terminal Ovalle</td><td>Vallenar</td><td align="center">$12.370</td></tr>
-                        <tr><td>12</td><td>KP175665-12</td><td>Terminal Vallenar</td><td>Antofagasta</td><td align="center">$33.200</td></tr>
-                        <tr><td>13</td><td>KP168652-13</td><td>Terminal Ovalle</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>13</td><td>KP179456-13</td><td>T. Valparaiso</td><td>Los Vilos</td><td align="center">$17.980</td></tr>
-                        <tr><td>14</td><td>KP175976-14</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>15</td><td>KP175976-15</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>16</td><td>1623745-16</td><td>T. Valparaiso</td><td>Calama</td><td align="center">$61.630</td></tr>
-                        <tr><td>17</td><td>KP176524-17</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>18</td><td>KP176312-18</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>19</td><td>1623745-19</td><td>T. Valparaiso</td><td>Calama</td><td align="center">$61.630</td></tr>
-                        <tr><td>20</td><td>KP176097-20</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>21</td><td>KP176477-21</td><td>T. La Serena</td><td>Calama</td><td align="center">$38.910</td></tr>
-                        <tr><td>21</td><td>KP180896-21</td><td>T. Viña del Mar</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>22</td><td>KP171130-22</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>23</td><td>KP177018-23</td><td>Terminal Vallenar</td><td>Sierra Gorda</td><td align="center">$37.005</td></tr>
-                        <tr><td>23</td><td>1639602-23</td><td>T. Viña del Mar</td><td>La Serena</td><td align="center">$17.000</td></tr>
-                        <tr><td>24</td><td>KP177143-24</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>24</td><td>1639611-24</td><td>T. Viña del Mar</td><td>La Serena</td><td align="center">$17.000</td></tr>
-                        <tr><td>25</td><td>KP171931-25</td><td>Terminal Vallenar</td><td>Calama</td><td align="center">$37.005</td></tr>
-                        <tr><td>25</td><td>KP179626-25</td><td>T. Viña del Mar</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>26</td><td>1636350-26</td><td>T. Viña del Mar</td><td>Calama</td><td align="center">$45.000</td></tr>
-                        <tr><td>27</td><td>KP177076-27</td><td>Terminal Ovalle</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>28</td><td>KP172298-28</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>29</td><td>KP175158-29</td><td>Terminal Ovalle</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>30</td><td>1633067-30</td><td>Terminal Ovalle</td><td>Antofagasta</td><td align="center">$35.000</td></tr>
-                        <tr><td>31</td><td>KP172146-31</td><td>T. Valparaiso</td><td>Calama</td><td align="center">$45.670</td></tr>
-                        <tr><td>32</td><td>KP173820-32</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>32</td><td>KP177248-32</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>33</td><td>KP173820-33</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>33</td><td>KP176430-33</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>34</td><td>1615211-34</td><td>T. Viña del Mar</td><td>Sierra Gorda</td><td align="center">$61.630</td></tr>
-                        <tr><td>35</td><td>KP173820-35</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>35</td><td>KP176366-35</td><td>Terminal Vallenar</td><td>Sierra Gorda</td><td align="center">$37.005</td></tr>
-                        <tr><td>35</td><td>KP180681-35</td><td>T. La Serena</td><td>Vallenar</td><td align="center">$11.320</td></tr>
-                        <tr><td>36</td><td>KP173820-36</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>36</td><td>KP176822-36</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>37</td><td>KP169662-37</td><td>T. Viña del Mar</td><td>Calama</td><td align="center">$45.670</td></tr>
-                        <tr><td>38</td><td>KP181655-38</td><td>T. La Serena</td><td>Vallenar</td><td align="center">$11.320</td></tr>
-                        <tr><td>38</td><td>KP176504-38</td><td>Terminal Vallenar</td><td>Calama</td><td align="center">$37.005</td></tr>
-                        <tr><td>38</td><td>KP173820-38</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>39</td><td>KP176751-39</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
-                        <tr><td>39</td><td>KP173820-39</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>40</td><td>KP173820-40</td><td>T. Valparaiso</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>40</td><td>KP180641-40</td><td>T. La Serena</td><td>Vallenar</td><td align="center">$11.320</td></tr>
-                        <tr><td>40</td><td>KP166195-40</td><td>Terminal Vallenar</td><td>Sierra Gorda</td><td align="center">$37.005</td></tr>
-                        <tr><td>41</td><td>KP175122-41</td><td>T. Viña del Mar</td><td>Antofagasta</td><td align="center">$40.910</td></tr>
-                        <tr><td>42</td><td>KP175399-42</td><td>T. La Serena</td><td>Sierra Gorda</td><td align="center">$38.910</td></tr>
-                        <tr><td>42</td><td>KP178750-42</td><td>T. Viña del Mar</td><td>La Serena</td><td align="center">$16.077</td></tr>
-                        <tr><td>43</td><td>KP181190-43</td><td>T. La Serena</td><td>Antofagasta</td><td align="center">$35.198</td></tr>
+                        <tr><td>1</td><td>KP174944-1</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>2</td><td>1631516-2</td><td>T. Ovalle</td><td>Antofagasta</td><td>$35.000</td></tr>
+                        <tr><td>3</td><td>KP180945-3</td><td>T. Ovalle</td><td>La Serena</td><td>$4.661</td></tr>
+                        <tr><td>3</td><td>KP180768-3</td><td>T. Viña del Mar</td><td>Ovalle</td><td>$17.980</td></tr>
+                        <tr><td>3</td><td>KP180500-3</td><td>T. Antofagasta</td><td>Calama</td><td>$9.513</td></tr>
+                        <tr><td>3</td><td>1611972-3</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.000</td></tr>
+                        <tr><td>4</td><td>KP170749-4</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>5</td><td>KP177285-5</td><td>T. Ovalle</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>6</td><td>KP181203-6</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>7</td><td>KP176325-7</td><td>La Calera R.5</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>8</td><td>KP181068-8</td><td>T. Antofagasta</td><td>Calama</td><td>$9.513</td></tr>
+                        <tr><td>8</td><td>KP177814-8</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>9</td><td>KP176414-9</td><td>T. Vallenar</td><td>Antofagasta</td><td>$33.200</td></tr>
+                        <tr><td>10</td><td>KP142097-10</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>10</td><td>KP181214-10</td><td>T. Ovalle</td><td>La Serena</td><td>$4.661</td></tr>
+                        <tr><td>11</td><td>KP178119-11</td><td>T. Valparaiso</td><td>Sierra Gorda</td><td>$45.670</td></tr>
+                        <tr><td>12</td><td>KP181395-12</td><td>T. Ovalle</td><td>Vallenar</td><td>$12.370</td></tr>
+                        <tr><td>12</td><td>KP175665-12</td><td>T. Vallenar</td><td>Antofagasta</td><td>$33.200</td></tr>
+                        <tr><td>13</td><td>KP168652-13</td><td>T. Ovalle</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>13</td><td>KP179456-13</td><td>T. Valparaiso</td><td>Los Vilos</td><td>$17.980</td></tr>
+                        <tr><td>14</td><td>KP175976-14</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>15</td><td>KP175976-15</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>16</td><td>1623745-16</td><td>T. Valparaiso</td><td>Calama</td><td>$61.630</td></tr>
+                        <tr><td>17</td><td>KP176524-17</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>18</td><td>KP176312-18</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>19</td><td>1623745-19</td><td>T. Valparaiso</td><td>Calama</td><td>$61.630</td></tr>
+                        <tr><td>20</td><td>KP176097-20</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>21</td><td>KP176477-21</td><td>T. La Serena</td><td>Calama</td><td>$38.910</td></tr>
+                        <tr><td>21</td><td>KP180896-21</td><td>T. Viña del Mar</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>22</td><td>KP171130-22</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>23</td><td>KP177018-23</td><td>T. Vallenar</td><td>Sierra Gorda</td><td>$37.005</td></tr>
+                        <tr><td>23</td><td>1639602-23</td><td>T. Viña del Mar</td><td>La Serena</td><td>$17.000</td></tr>
+                        <tr><td>24</td><td>KP177143-24</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>24</td><td>1639611-24</td><td>T. Viña del Mar</td><td>La Serena</td><td>$17.000</td></tr>
+                        <tr><td>25</td><td>KP171931-25</td><td>T. Vallenar</td><td>Calama</td><td>$37.005</td></tr>
+                        <tr><td>25</td><td>KP179626-25</td><td>T. Viña del Mar</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>26</td><td>1636350-26</td><td>T. Viña del Mar</td><td>Calama</td><td>$45.000</td></tr>
+                        <tr><td>27</td><td>KP177076-27</td><td>T. Ovalle</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>28</td><td>KP172298-28</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>29</td><td>KP175158-29</td><td>T. Ovalle</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>30</td><td>1633067-30</td><td>T. Ovalle</td><td>Antofagasta</td><td>$35.000</td></tr>
+                        <tr><td>31</td><td>KP172146-31</td><td>T. Valparaiso</td><td>Calama</td><td>$45.670</td></tr>
+                        <tr><td>32</td><td>KP173820-32</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>32</td><td>KP177248-32</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>33</td><td>KP173820-33</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>33</td><td>KP176430-33</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>34</td><td>1615211-34</td><td>T. Viña del Mar</td><td>Sierra Gorda</td><td>$61.630</td></tr>
+                        <tr><td>35</td><td>KP173820-35</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>35</td><td>KP176366-35</td><td>T. Vallenar</td><td>Sierra Gorda</td><td>$37.005</td></tr>
+                        <tr><td>35</td><td>KP180681-35</td><td>T. La Serena</td><td>Vallenar</td><td>$11.320</td></tr>
+                        <tr><td>36</td><td>KP173820-36</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>36</td><td>KP176822-36</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>37</td><td>KP169662-37</td><td>T. Viña del Mar</td><td>Calama</td><td>$45.670</td></tr>
+                        <tr><td>38</td><td>KP181655-38</td><td>T. La Serena</td><td>Vallenar</td><td>$11.320</td></tr>
+                        <tr><td>38</td><td>KP176504-38</td><td>T. Vallenar</td><td>Calama</td><td>$37.005</td></tr>
+                        <tr><td>38</td><td>KP173820-38</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>39</td><td>KP176751-39</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
+                        <tr><td>39</td><td>KP173820-39</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>40</td><td>KP173820-40</td><td>T. Valparaiso</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>40</td><td>KP180641-40</td><td>T. La Serena</td><td>Vallenar</td><td>$11.320</td></tr>
+                        <tr><td>40</td><td>KP166195-40</td><td>T. Vallenar</td><td>Sierra Gorda</td><td>$37.005</td></tr>
+                        <tr><td>41</td><td>KP175122-41</td><td>T. Viña del Mar</td><td>Antofagasta</td><td>$40.910</td></tr>
+                        <tr><td>42</td><td>KP175399-42</td><td>T. La Serena</td><td>Sierra Gorda</td><td>$38.910</td></tr>
+                        <tr><td>42</td><td>KP178750-42</td><td>T. Viña del Mar</td><td>La Serena</td><td>$16.077</td></tr>
+                        <tr><td>43</td><td>KP181190-43</td><td>T. La Serena</td><td>Antofagasta</td><td>$35.198</td></tr>
                     </tbody>
                     <tfoot>
                         <tr class="fw-bold">
@@ -232,9 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     </tfoot>
                 </table>
 
-                <div style="margin-top: 15px;">
-                    <table class="table-bordered" style="width: 100%; font-size: 9px;">
-                        <tr class="bg-gray fw-bold">
+                <div style="margin-top: 12px;">
+                    <table class="table-bordered" style="width: 100%;">
+                        <tr class="fw-bold">
                             <td align="center" style="width:30px">Sucursal</td>
                             <td align="center" style="width:40px">Recaudado</td>
                             <td align="center" style="width:30px">Asientos</td>
@@ -247,33 +252,33 @@ document.addEventListener("DOMContentLoaded", () => {
                     </table>
                 </div>
 
-                <div style="margin-top: 15px;">
+                <div style="margin-top: 12px;">
                     <div class="fw-bold" style="border-bottom: 1px solid black;">Puntos de embarque:</div>
-                    <div class="fw-bold" style="margin-top:5px;">Valparaiso</div>
+                    <div class="fw-bold" style="margin-top:4px;">Valparaiso</div>
                     <div>T. Valparaiso (08:30 AM): 12 (32, 33, 35, 36, 38, 39, 40, 11, 13, 16, 19, 31)</div>
-                    <div class="fw-bold" style="margin-top:5px;">Viña Del Mar</div>
+                    <div class="fw-bold" style="margin-top:4px;">Viña Del Mar</div>
                     <div>T. Viña del Mar (09:10 AM): 18 (34, 37, 41, 42, 3, 4, 6, 8, 14, 15, 18, 20, 21, 22, 23, 24, 25, 26)</div>
-                    <div class="fw-bold" style="margin-top:5px;">Quillota</div>
+                    <div class="fw-bold" style="margin-top:4px;">Quillota</div>
                     <div>Paradero La Palma Ruta 60 (09:40 AM)</div>
-                    <div class="fw-bold" style="margin-top:5px;">La Calera</div>
+                    <div class="fw-bold" style="margin-top:4px;">La Calera</div>
                     <div>La Calera Sopraval Ruta 5 (09:50 AM): 1 (7)</div>
-                    <div class="fw-bold" style="margin-top:5px;">Los Vilos</div>
+                    <div class="fw-bold" style="margin-top:4px;">Los Vilos</div>
                     <div>Petrobras Ruta 5 (11:30 AM)</div>
-                    <div class="fw-bold" style="margin-top:5px;">Ovalle</div>
+                    <div class="fw-bold" style="margin-top:4px;">Ovalle</div>
                     <div>Terminal Ovalle (01:40 PM): 9 (2, 3, 5, 10, 12, 13, 27, 29, 30)</div>
-                    <div class="fw-bold" style="margin-top:5px;">La Serena</div>
+                    <div class="fw-bold" style="margin-top:4px;">La Serena</div>
                     <div>T. La Serena (03:10 PM): 16 (32, 33, 35, 36, 38, 39, 40, 42, 43, 1, 3, 10, 17, 21, 24, 28)</div>
-                     <div class="fw-bold" style="margin-top:5px;">Vallenar</div>
+                    <div class="fw-bold" style="margin-top:4px;">Vallenar</div>
                     <div>Terminal Vallenar (05:40 PM): 7 (35, 38, 40, 9, 12, 23, 25)</div>
-                    <div class="fw-bold" style="margin-top:5px;">Antofagasta</div>
+                    <div class="fw-bold" style="margin-top:4px;">Antofagasta</div>
                     <div>Terminal Antofagasta (02:30 AM): 2 (3, 8)</div>
-                    <div class="fw-bold" style="margin-top:5px;">Sierra Gorda</div>
+                    <div class="fw-bold" style="margin-top:4px;">Sierra Gorda</div>
                     <div>Sierra Gorda S. Allende 601 (04:30 AM)</div>
                 </div>
 
-                <div style="margin-top: 15px;">
+                <div style="margin-top: 12px;">
                     <div class="fw-bold" style="border-bottom: 1px solid black;">Resumen de Puntos de Descarga:</div>
-                    <div style="margin-top:5px;"><b>Los Vilos</b>: Petrobras Ruta 5 - 1 (13)</div>
+                    <div style="margin-top:4px;"><b>Los Vilos</b>: Petrobras Ruta 5 - 1 (13)</div>
                     <div><b>Ovalle</b>: Terminal Ovalle - 1 (3)</div>
                     <div><b>La Serena</b>: T. La Serena - 7 (42, 3, 10, 21, 23, 24, 25)</div>
                     <div><b>Vallenar</b>: Terminal Vallenar - 4 (35, 38, 40, 12)</div>
@@ -283,13 +288,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div><b>Unassigned</b>: 9 (32, 33, 35, 36, 38, 39, 40, 28, 31)</div>
                 </div>
 
-                <div style="margin-top: 15px; border-top: 1px dashed black; padding-top: 5px;">
+                <div style="margin-top: 12px; border-top: 1px dashed black; padding-top: 4px;">
                     <div class="fw-bold">Recuento de abordados: 65</div>
                     <div>Recuento de no abordados: 0</div>
                     <div class="fw-bold">Total Ventas: $2.008.425</div>
                 </div>
 
-                <div style="margin-top: 20px; text-align: right; font-size: 9px;">
+                <div style="margin-top: 15px; text-align: right; font-style: italic;">
                     Impreso por: owner 10/11/2025 03:04 PM
                 </div>
             </div>
@@ -301,5 +306,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     reportSelector.addEventListener('change', (e) => loadReport(e.target.value));
-    loadReport(reportSelector.value); // Carga inicial
+    loadReport(reportSelector.value);
 });

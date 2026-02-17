@@ -48,97 +48,224 @@ select {
     background: #e9e9e9; padding: 20px; border-radius: 10px; overflow-x: auto;
 }
 
-/* Simulación en pantalla un poco más estrecha para ser realistas */
 .print-canvas {
-    width: 76mm; /* Simula el área real imprimible */
-    min-height: 400px; background: white; padding: 2mm;
-    margin: 0 auto; box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 76mm;
+    min-height: 400px;
+    background: white;
+    padding: 2mm;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    font-size: 9px;
 }
 
-/* --- ESTILOS CRÍTICOS DE IMPRESIÓN (OPTIMIZADO) --- */
+/* =============================================
+   ESTILOS DE PANTALLA PARA TABLAS
+   Columnas definidas también fuera de @print
+   para que el front no se rompa.
+============================================= */
+
+/* Tabla general en pantalla */
+.print-canvas table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 9px;
+}
+
+.print-canvas th,
+.print-canvas td {
+    vertical-align: top;
+    padding: 1px 2px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.print-canvas .table-bordered th,
+.print-canvas .table-bordered td {
+    border: 0.5px solid #000;
+}
+
+.print-canvas .table-bordered thead th {
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    text-align: center;
+}
+
+.print-canvas .fw-bold  { font-weight: bold; }
+.print-canvas .bg-gray  { background: none; }
+
+/* DIAGRAMA — anchos en pantalla */
+.print-canvas .table-diagram th:nth-child(1),
+.print-canvas .table-diagram td:nth-child(1) { width: 5%;  text-align: center; }
+.print-canvas .table-diagram th:nth-child(2),
+.print-canvas .table-diagram td:nth-child(2) { width: 26%; font-weight: bold; }
+.print-canvas .table-diagram th:nth-child(3),
+.print-canvas .table-diagram td:nth-child(3) { width: 25%; }
+.print-canvas .table-diagram th:nth-child(4),
+.print-canvas .table-diagram td:nth-child(4) { width: 24%; }
+.print-canvas .table-diagram th:nth-child(5),
+.print-canvas .table-diagram td:nth-child(5) { width: 20%; text-align: left; font-weight: bold; }
+
+/* LISTADO — anchos en pantalla */
+.print-canvas .table-listado th:nth-child(1),
+.print-canvas .table-listado td:nth-child(1) { width: 5%;  text-align: center; }
+.print-canvas .table-listado th:nth-child(2),
+.print-canvas .table-listado td:nth-child(2) { width: 30%; }
+.print-canvas .table-listado th:nth-child(3),
+.print-canvas .table-listado td:nth-child(3) { width: 25%; font-weight: bold; }
+.print-canvas .table-listado th:nth-child(4),
+.print-canvas .table-listado td:nth-child(4) { width: 22%; }
+.print-canvas .table-listado th:nth-child(5),
+.print-canvas .table-listado td:nth-child(5) { width: 18%; }
+
+
+/* =============================================
+   IMPRESIÓN TÉRMICA 80mm
+============================================= */
 @media print {
     @page {
         size: 80mm auto;
-        margin: 0mm; /* Eliminamos margen de hardware aquí, lo controlamos manualmente */
+        margin: 0mm;
     }
 
     html, body {
-        margin: 0 !important; padding: 0 !important; background: none !important;
-        width: 80mm !important; max-width: 80mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: none !important;
+        width: 80mm !important;
+        max-width: 80mm !important;
     }
 
     .no-print { display: none !important; }
-    .main-container { padding: 0 !important; margin: 0 !important; background: none !important; }
 
-    /* Contenedor maestro: Forzamos 70mm para dejar margen de seguridad adicional
-       y compensar diferencias entre motores de impresión. */
+    .main-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: none !important;
+    }
+
+    /* Alineado a la izquierda absoluta para neutralizar el margen
+       hardware del driver de impresora térmica */
     .print-canvas {
-        width: 70mm !important;
-        max-width: 70mm !important;
-        margin: 0 auto !important; /* Centrado en el papel de 80mm */
-        padding: 0.4mm 0 !important;
+        width: 76mm !important;
+        max-width: 76mm !important;
+        margin: 0 0 0 0 !important;   /* flush left — sin auto */
+        padding: 0 0 0 0.5mm !important;
         box-shadow: none !important;
         overflow: hidden !important;
     }
 
-    /* Tipografía compacta para impresión */
-    .print-canvas, .print-canvas * {
-        font-family: 'Arial Narrow', 'Helvetica Condensed', sans-serif !important;
-        font-size: 10.5px !important; /* Más denso pero legible en térmica */
-        line-height: 1 !important;
+    .print-canvas,
+    .print-canvas * {
+        font-family: Arial, 'Helvetica Neue', sans-serif !important;
+        font-size: 7.5pt !important;
+        line-height: 1.15 !important;
         color: #000 !important;
+        background: none !important;
         box-sizing: border-box !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
-    /* Tablas compactas */
     table {
         width: 100% !important;
         border-collapse: collapse !important;
-        table-layout: fixed !important; /* OBLIGATORIO para respetar anchos */
+        table-layout: fixed !important;
     }
 
     th, td {
-        vertical-align: top;
-        padding: 0.3mm 0.4mm !important; /* Padding muy pequeño para ahorrar espacio */
+        vertical-align: middle !important;
+        padding: 0.5mm 0.6mm !important;
         overflow-wrap: break-word !important;
-        word-wrap: break-word !important;
-        word-break: break-word !important; /* Romper palabras si es necesario */
-        white-space: normal !important;   /* Permitir múltiples líneas donde haga falta */
+        word-break: break-word !important;
+        white-space: normal !important;
+        background: none !important;
     }
 
-    .table-bordered th, .table-bordered td {
-        border: 0.4px solid #000 !important; /* Bordes aún más finos para ganar ancho */
+    .table-bordered th,
+    .table-bordered td {
+        border: 0.5pt solid #000 !important;
     }
 
-    /* Utilitarios */
-    .fw-bold { font-weight: bold !important; }
-    .bg-gray { background-color: #eee !important; }
-    .text-end, [align="center"] { text-align: center !important; }
+    .table-bordered thead th {
+        font-weight: bold !important;
+        border-bottom: 1pt solid #000 !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        background: none !important;
+    }
+
+    tr, th, td,
+    thead tr, tbody tr, tfoot tr {
+        background: none !important;
+        background-color: transparent !important;
+    }
+
+    .fw-bold  { font-weight: bold !important; }
+    .bg-gray  { background: none !important; }
+    .text-end { text-align: right !important; }
     .text-center, [align="center"] { text-align: center !important; }
-    img.print-logo { max-width: 100% !important; height: auto; display: block; margin: 0.4mm auto 1mm !important; max-height: 10mm !important; }
 
-    /* =========================================
-       OPTIMIZACIÓN DE COLUMNAS (Total ~72mm)
-       ========================================= */
-    
-    /* --- 1. LISTADO DE PASAJEROS --- */
-    /* Prioridad: ID, Teléfono, Equipaje. "No" mínimo. */
-    /* Ajustes más conservadores para evitar overflow horizontal */
-    .table-listado th:nth-child(1), .table-listado td:nth-child(1) { width: 5mm !important; text-align: center; } /* No */
-    .table-listado th:nth-child(2), .table-listado td:nth-child(2) { width: 22mm !important; }  /* Nombre (permitir wrap) */
-    .table-listado th:nth-child(3), .table-listado td:nth-child(3) { width: 15mm !important; font-weight: bold; } /* ID */
-    .table-listado th:nth-child(4), .table-listado td:nth-child(4) { width: 13mm !important; }/* Teléfono */
-    .table-listado th:nth-child(5), .table-listado td:nth-child(5) { width: 14mm !important; }  /* Equipaje (permitir wrap) */
+    img.print-logo {
+        max-width: 100% !important;
+        height: auto;
+        display: block;
+        margin: 0.4mm auto 1mm !important;
+        max-height: 10mm !important;
+    }
 
-    /* --- 2. DIAGRAMA DE PASAJES --- */
-    /* Prioridad: Boleto, Valor, Embarque. "No" mínimo. */
-    .table-diagram th:nth-child(1), .table-diagram td:nth-child(1) { width: 5mm !important; text-align: center; } /* No */
-    .table-diagram th:nth-child(2), .table-diagram td:nth-child(2) { width: 16mm !important; font-weight: bold; } /* Boleto */
-    .table-diagram th:nth-child(3), .table-diagram td:nth-child(3) { width: 20mm !important; }  /* Embarque */
-    .table-diagram th:nth-child(4), .table-diagram td:nth-child(4) { width: 15mm !important; }/* Destino */
-    .table-diagram th:nth-child(5), .table-diagram td:nth-child(5) { width: 13mm !important; text-align: center; font-weight: bold;} /* Valor */
+    /* =============================================
+       DIAGRAMA DE PASAJES — 76mm
+       No=5  Boleto=19  Embarque=19  Destino=16  Valor=17
+    ============================================= */
+    .table-diagram th:nth-child(1),
+    .table-diagram td:nth-child(1) { width: 5mm !important;  text-align: center !important; }
+    .table-diagram th:nth-child(2),
+    .table-diagram td:nth-child(2) { width: 19mm !important; font-weight: bold !important; }
+    .table-diagram th:nth-child(3),
+    .table-diagram td:nth-child(3) { width: 19mm !important; }
+    .table-diagram th:nth-child(4),
+    .table-diagram td:nth-child(4) { width: 16mm !important; }
+    .table-diagram th:nth-child(5),
+    .table-diagram td:nth-child(5) { width: 17mm !important; text-align: left !important; font-weight: bold !important; }
 
-    /* Ajustes para pies de tabla y resúmenes */
-    tfoot td { border-top: 1px double black !important; font-size: 11px !important; padding-top: 2px !important; }
-    .summary-table td { padding: 1px 2px !important; }
+    /* =============================================
+       LISTADO DE PASAJEROS — 76mm
+       No=5  Nombre=23  ID=17  Teléfono=16  Equipaje=15
+    ============================================= */
+    .table-listado th:nth-child(1),
+    .table-listado td:nth-child(1) { width: 5mm !important;  text-align: center !important; }
+    .table-listado th:nth-child(2),
+    .table-listado td:nth-child(2) { width: 23mm !important; }
+    .table-listado th:nth-child(3),
+    .table-listado td:nth-child(3) { width: 17mm !important; font-weight: bold !important; }
+    .table-listado th:nth-child(4),
+    .table-listado td:nth-child(4) { width: 16mm !important; }
+    .table-listado th:nth-child(5),
+    .table-listado td:nth-child(5) { width: 15mm !important; }
+
+    tfoot td {
+        border-top: 1pt solid #000 !important;
+        font-weight: bold !important;
+        padding-top: 0.8mm !important;
+        background: none !important;
+    }
+
+    .summary-table td {
+        padding: 0.4mm 0.6mm !important;
+    }
+
+    /* Ajuste específico: dar más espacio al campo 'Valor' en la fila Monto Total */
+    .table-diagram tfoot tr.fw-bold td[colspan="4"] {
+        width: 52mm !important; /* reduce un poco el espacio de la etiqueta */
+        text-align: left !important;
+        padding-right: 0.6mm !important;
+    }
+    .table-diagram tfoot tr.fw-bold td:last-child {
+        width: 24mm !important; /* asigna más espacio al monto */
+        text-align: left !important;
+        padding-left: 0.2mm !important;
+    }
 }
