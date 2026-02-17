@@ -1,8 +1,4 @@
-/* ============================================
-   PLANILLA DE EQUIPAJE - CSS OPTIMIZADO v5.0
-   ============================================ */
-
-/* --- VARIABLES Y BASE --- */
+/* --- Estilos Base (Pantalla) --- */
 :root {
     --bg-color: #f0f2f5;
     --text-color: #1a1a1a;
@@ -19,7 +15,6 @@ body {
     align-items: center;
 }
 
-/* --- BARRA DE CONTROL --- */
 .control-bar {
     background: white;
     padding: 15px 20px;
@@ -41,331 +36,109 @@ body {
 }
 
 select {
-    padding: 8px;
-    flex-grow: 1;
-    font-size: 12px;
+    padding: 8px; flex-grow: 1; font-size: 12px;
 }
 
 .print-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
+    background-color: #28a745; color: white; border: none;
+    padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer;
 }
 
-/* --- CONTENEDOR PRINCIPAL --- */
 .main-container {
-    background: #e9e9e9;
-    padding: 20px;
-    border-radius: 10px;
-    overflow-x: auto;
+    background: #e9e9e9; padding: 20px; border-radius: 10px; overflow-x: auto;
 }
 
+/* Simulación en pantalla un poco más estrecha para ser realistas */
 .print-canvas {
-    width: 78mm;
-    min-height: 400px;
-    background: white;
-    padding: 2mm;
-    margin: 0 auto;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 76mm; /* Simula el área real imprimible */
+    min-height: 400px; background: white; padding: 2mm;
+    margin: 0 auto; box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
-/* ============================================
-   ESTILOS DE TABLA EQUIPAJE - UNIFORME
-   ============================================ */
-
-/* --- CONFIGURACIÓN BASE --- */
-.table-listado-equipaje {
-    width: 78mm !important;
-    max-width: 78mm !important;
-    table-layout: fixed !important;
-    border-collapse: collapse !important;
-    font-size: 9px;
-    margin: 0;
-}
-
-/* --- ANCHOS DE COLUMNAS (TODOS LOS CONTEXTOS) --- */
-.table-listado-equipaje th:nth-child(1),
-.table-listado-equipaje td:nth-child(1) {
-    width: 7mm !important;
-    text-align: center !important;
-}
-
-.table-listado-equipaje th:nth-child(2),
-.table-listado-equipaje td:nth-child(2) {
-    width: 21mm !important;
-}
-
-.table-listado-equipaje th:nth-child(3),
-.table-listado-equipaje td:nth-child(3) {
-    width: 17mm !important;
-    text-align: center !important;
-}
-
-.table-listado-equipaje th:nth-child(4),
-.table-listado-equipaje td:nth-child(4) {
-    width: 33mm !important;
-    padding: 0 !important;
-}
-
-/* --- TAMAÑO DE FUENTE --- */
-.table-listado-equipaje thead {
-    font-size: 9px;
-}
-
-.table-listado-equipaje tbody {
-    font-size: 11px !important;
-}
-
-/* --- ALTURA DE FILAS --- */
-.table-listado-equipaje tbody tr {
-    height: 20mm !important;
-}
-
-.table-listado-equipaje tbody td {
-    height: 20mm !important;
-    box-sizing: border-box !important;
-}
-
-/* --- BORDES EN PANTALLA --- */
-.table-listado-equipaje th,
-.table-listado-equipaje td {
-    border: 1px solid #333;
-    padding: 1mm 0.5mm;
-    margin: 0;
-    box-sizing: border-box;
-    vertical-align: middle;
-}
-
-/* --- HELPERS PARA RUT Y TELÉFONO --- */
-.table-listado-equipaje .rut-line {
-    display: block;
-    font-size: 11px !important;
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-.table-listado-equipaje .phone-line {
-    display: block;
-    font-size: 10px !important;
-    color: #000;
-    line-height: 1.2;
-    margin-top: 2px;
-}
-
-/* --- CELDA DE EQUIPAJE (SIN RECUADRO INTERNO) --- */
-.equipaje-cell {
-    width: 33mm !important;
-    height: 20mm !important;
-    border: none !important;
-    display: block;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ============================================
-   ESTILOS DE IMPRESIÓN - OPTIMIZADOS
-   ============================================ */
-
+/* --- ESTILOS CRÍTICOS DE IMPRESIÓN (OPTIMIZADO) --- */
 @media print {
-    /* --- CONFIGURACIÓN DE PÁGINA --- */
     @page {
         size: 80mm auto;
-        margin: 2mm 1mm 2mm 2mm;
+        margin: 0mm; /* Eliminamos margen de hardware aquí, lo controlamos manualmente */
     }
 
     html, body {
-        margin: 0 !important;
-        padding: 0 !important;
-        background: none !important;
-        width: 80mm !important;
-        max-width: 80mm !important;
+        margin: 0 !important; padding: 0 !important; background: none !important;
+        width: 80mm !important; max-width: 80mm !important;
     }
 
-    /* --- OCULTAR CONTROLES --- */
-    .no-print {
-        display: none !important;
-    }
+    .no-print { display: none !important; }
+    .main-container { padding: 0 !important; margin: 0 !important; background: none !important; }
 
-    .control-bar,
-    .main-container {
-        padding: 0 !important;
-        margin: 0 !important;
-        background: none !important;
-        box-shadow: none !important;
-    }
-
-    /* --- CANVAS DE IMPRESIÓN --- */
+    /* Contenedor maestro: Forzamos 70mm para dejar margen de seguridad adicional
+       y compensar diferencias entre motores de impresión. */
     .print-canvas {
-        width: 78mm !important;
-        max-width: 78mm !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        width: 70mm !important;
+        max-width: 70mm !important;
+        margin: 0 auto !important; /* Centrado en el papel de 80mm */
+        padding: 0.4mm 0 !important;
         box-shadow: none !important;
+        overflow: hidden !important;
     }
 
-    /* --- TABLA EN IMPRESIÓN --- */
-    .table-listado-equipaje {
-        width: 78mm !important;
-        border-collapse: collapse !important;
-        page-break-inside: auto;
-    }
-
-    /* --- ALTURA EXACTA EN IMPRESIÓN --- */
-    .table-listado-equipaje tbody tr {
-        height: 21mm !important; /* Aumentado a 21mm para compensar compresión de impresora */
-        min-height: 21mm !important;
-        max-height: 21mm !important;
-        page-break-inside: avoid;
-    }
-
-    .table-listado-equipaje tbody td {
-        height: 21mm !important;
-        min-height: 21mm !important;
-        max-height: 21mm !important;
+    /* Tipografía compacta para impresión */
+    .print-canvas, .print-canvas * {
+        font-family: 'Arial Narrow', 'Helvetica Condensed', sans-serif !important;
+        font-size: 10.5px !important; /* Más denso pero legible en térmica */
+        line-height: 1 !important;
+        color: #000 !important;
         box-sizing: border-box !important;
-        overflow: visible !important;
     }
 
-    /* --- BORDES EN IMPRESIÓN --- */
-    .table-listado-equipaje th,
-    .table-listado-equipaje td {
-        border: 0.8px solid #000 !important;
-        padding: 0.5mm !important;
+    /* Tablas compactas */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        table-layout: fixed !important; /* OBLIGATORIO para respetar anchos */
     }
 
-    /* --- FUENTE EN IMPRESIÓN --- */
-    .table-listado-equipaje thead {
-        font-size: 9px !important;
+    th, td {
+        vertical-align: top;
+        padding: 0.3mm 0.4mm !important; /* Padding muy pequeño para ahorrar espacio */
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important; /* Romper palabras si es necesario */
+        white-space: normal !important;   /* Permitir múltiples líneas donde haga falta */
     }
 
-    .table-listado-equipaje tbody {
-        font-size: 11px !important;
+    .table-bordered th, .table-bordered td {
+        border: 0.4px solid #000 !important; /* Bordes aún más finos para ganar ancho */
     }
 
-    .table-listado-equipaje .rut-line {
-        font-size: 11px !important;
-    }
-
-    .table-listado-equipaje .phone-line {
-        font-size: 10px !important;
-    }
-
-    /* --- CELDA EQUIPAJE EN IMPRESIÓN --- */
-    .equipaje-cell {
-        width: 33mm !important;
-        height: 23mm !important; /* Aumentado para compensar */
-        border: none !important;
-    }
-
-    /* --- ANCHOS REFORZADOS EN IMPRESIÓN --- */
-    .table-listado-equipaje th:nth-child(1),
-    .table-listado-equipaje td:nth-child(1) {
-        width: 6mm !important;
-        text-align: center !important;
-    }
-
-    .table-listado-equipaje th:nth-child(2),
-    .table-listado-equipaje td:nth-child(2) {
-        width: 21mm !important;
-    }
-
-    .table-listado-equipaje th:nth-child(3),
-    .table-listado-equipaje td:nth-child(3) {
-        width: 18mm !important;
-        text-align: center !important;
-    }
-
-    .table-listado-equipaje th:nth-child(4),
-    .table-listado-equipaje td:nth-child(4) {
-        width: 33mm !important;
-        padding: 0 !important;
-    }
-}
-
-/* ============================================
-   ESTILOS PARA VISTA PREVIA
-   ============================================ */
-
-.print-canvas.preview-print {
-    width: 78mm !important;
-    max-width: 78mm !important;
-    padding: 1mm !important;
-    background: white !important;
-    box-shadow: none !important;
-    margin: 6px auto !important;
-}
-
-/* Aplicar los mismos estilos de impresión en la vista previa */
-.print-canvas.preview-print .table-listado-equipaje tbody tr {
-    height: 20mm !important;
-}
-
-.print-canvas.preview-print .table-listado-equipaje tbody td {
-    height: 20mm !important;
-}
-
-.print-canvas.preview-print .table-listado-equipaje th,
-.print-canvas.preview-print .table-listado-equipaje td {
-    border: 0.8px solid #000 !important;
-}
-
-/* ============================================
-   ESTILOS PARA OTRAS TABLAS (NO EQUIPAJE)
-   ============================================ */
-
-.table-listado {
-    font-size: 9px;
-}
-
-.table-listado th:nth-child(1), .table-listado td:nth-child(1) { width: 5mm !important; text-align: center; }
-.table-listado th:nth-child(2), .table-listado td:nth-child(2) { width: 22mm !important; }
-.table-listado th:nth-child(3), .table-listado td:nth-child(3) { width: 15mm !important; font-weight: bold; }
-.table-listado th:nth-child(4), .table-listado td:nth-child(4) { width: 13mm !important; }
-.table-listado th:nth-child(5), .table-listado td:nth-child(5) { width: 14mm !important; }
-
-.table-diagram th:nth-child(1), .table-diagram td:nth-child(1) { width: 5mm !important; text-align: center; }
-.table-diagram th:nth-child(2), .table-diagram td:nth-child(2) { width: 16mm !important; font-weight: bold; }
-.table-diagram th:nth-child(3), .table-diagram td:nth-child(3) { width: 20mm !important; }
-.table-diagram th:nth-child(4), .table-diagram td:nth-child(4) { width: 15mm !important; }
-.table-diagram th:nth-child(5), .table-diagram td:nth-child(5) { width: 13mm !important; text-align: center; font-weight: bold; }
-
-.table-bordered th, .table-bordered td {
-    border: 0.8px solid #000 !important;
-}
-
-/* ============================================
-   UTILIDADES
-   ============================================ */
-
-.fw-bold { font-weight: bold !important; }
-.bg-gray { background-color: #eee !important; }
-.text-end, [align="center"] { text-align: center !important; }
-.text-center, [align="center"] { text-align: center !important; }
-
-img.print-logo {
-    max-width: 100% !important;
-    height: auto;
-    display: block;
-    margin: 0.4mm auto 1mm !important;
-    max-height: 10mm !important;
-}
-
-@media print {
+    /* Utilitarios */
     .fw-bold { font-weight: bold !important; }
     .bg-gray { background-color: #eee !important; }
     .text-end, [align="center"] { text-align: center !important; }
     .text-center, [align="center"] { text-align: center !important; }
+    img.print-logo { max-width: 100% !important; height: auto; display: block; margin: 0.4mm auto 1mm !important; max-height: 10mm !important; }
+
+    /* =========================================
+       OPTIMIZACIÓN DE COLUMNAS (Total ~72mm)
+       ========================================= */
     
-    img.print-logo {
-        max-width: 100% !important;
-        height: auto;
-        display: block;
-        margin: 0.4mm auto 1mm !important;
-        max-height: 10mm !important;
-    }
+    /* --- 1. LISTADO DE PASAJEROS --- */
+    /* Prioridad: ID, Teléfono, Equipaje. "No" mínimo. */
+    /* Ajustes más conservadores para evitar overflow horizontal */
+    .table-listado th:nth-child(1), .table-listado td:nth-child(1) { width: 5mm !important; text-align: center; } /* No */
+    .table-listado th:nth-child(2), .table-listado td:nth-child(2) { width: 22mm !important; }  /* Nombre (permitir wrap) */
+    .table-listado th:nth-child(3), .table-listado td:nth-child(3) { width: 15mm !important; font-weight: bold; } /* ID */
+    .table-listado th:nth-child(4), .table-listado td:nth-child(4) { width: 13mm !important; }/* Teléfono */
+    .table-listado th:nth-child(5), .table-listado td:nth-child(5) { width: 14mm !important; }  /* Equipaje (permitir wrap) */
+
+    /* --- 2. DIAGRAMA DE PASAJES --- */
+    /* Prioridad: Boleto, Valor, Embarque. "No" mínimo. */
+    .table-diagram th:nth-child(1), .table-diagram td:nth-child(1) { width: 5mm !important; text-align: center; } /* No */
+    .table-diagram th:nth-child(2), .table-diagram td:nth-child(2) { width: 16mm !important; font-weight: bold; } /* Boleto */
+    .table-diagram th:nth-child(3), .table-diagram td:nth-child(3) { width: 20mm !important; }  /* Embarque */
+    .table-diagram th:nth-child(4), .table-diagram td:nth-child(4) { width: 15mm !important; }/* Destino */
+    .table-diagram th:nth-child(5), .table-diagram td:nth-child(5) { width: 13mm !important; text-align: center; font-weight: bold;} /* Valor */
+
+    /* Ajustes para pies de tabla y resúmenes */
+    tfoot td { border-top: 1px double black !important; font-size: 11px !important; padding-top: 2px !important; }
+    .summary-table td { padding: 1px 2px !important; }
 }

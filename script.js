@@ -125,8 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `,
 
-        
-
         // =================================================================
         // REPORTE 2: DIAGRAMA DE PASAJES (Columnas separadas Origen/Destino)
         // =================================================================
@@ -299,105 +297,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function loadReport(type) {
-        // Ensure preview-print is cleared by default; we'll add it for equipaje preview
-        printArea.classList.remove('preview-print');
-
-        // If the equipaje report is requested, derive it from the base `listado`
-        if (type === 'listado_equipaje') {
-            // Render the original listado first
-            printArea.innerHTML = REPORTS['listado'];
-
-            // Swap the table class to a dedicated one for equipaje-specific styling
-            const tbl = printArea.querySelector('.table-listado');
-            if (tbl) {
-                tbl.classList.remove('table-listado');
-                tbl.classList.add('table-listado-equipaje');
-            }
-
-            // Merge ID and Teléfono into a single column `ID / TELEFONO`.
-            // Adjust header first (convert 5 cols -> 4 cols)
-            const theadRow = tbl ? tbl.querySelector('thead tr') : null;
-            if (theadRow) {
-                theadRow.innerHTML = `
-                    <th>No</th>
-                    <th>Nombre</th>
-                    <th>ID / TELEFONO</th>
-                    <th>Equipaje</th>
-                `;
-            }
-
-            // Helpers: format RUT as XXXXXXXX-X (keep dash/verifier) and phone as 9 digits
-            function formatRut(raw) {
-                let s = (raw || '').toString().replace(/\./g, '').replace(/\s+/g, '').toUpperCase();
-                if (!s) return '';
-                if (s.indexOf('-') >= 0) return s;
-                if (s.length > 1) return s.slice(0, -1) + '-' + s.slice(-1);
-                return s;
-            }
-
-            function formatPhone(raw) {
-                const digits = (raw || '').toString().replace(/\D/g, '');
-                if (!digits) return '';
-                // keep last 9 digits if longer
-                return digits.length > 9 ? digits.slice(-9) : digits;
-            }
-
-            // For each body row, combine the 3rd (ID) and 4th (Teléfono) cells into one
-            const bodyRows = printArea.querySelectorAll('.table-listado-equipaje tbody tr');
-            bodyRows.forEach(r => {
-                const tds = r.querySelectorAll('td');
-                if (tds.length >= 4) {
-                    const idTd = tds[2];
-                    const phoneTd = tds[3];
-                    const idText = formatRut(idTd.textContent || '');
-                    const phoneText = formatPhone(phoneTd.textContent || '');
-                    idTd.innerHTML = '<div class="rut-line">' + idText + '</div>' + '<div class="phone-line">' + phoneText + '</div>';
-                    // remove the original phone cell so row becomes 4 columns
-                    phoneTd.remove();
-                }
-            });
-
-            // Now replace the (new) 4th cell content with an equipaje box
-            const rowsEquip = printArea.querySelectorAll('.table-listado-equipaje tbody tr');
-            rowsEquip.forEach(r => {
-                const td = r.querySelector('td:nth-child(4)');
-                if (td) td.innerHTML = '<div class="equipaje-cell"></div>';
-            });
-
-            // Keep preview class on the canvas so the front matches the print output
-            printArea.classList.add('preview-print');
-            // Do not run normalizeIds here because it would replace innerHTML of merged cells.
-            return;
-        }
-
-        // Default behavior: render requested report
         printArea.innerHTML = REPORTS[type];
-        // Normalizar IDs en cualquier tabla de listado (quitar puntos)
-        normalizeIds();
-    }
-
-    // Quita los puntos de formato en las celdas de ID (columna 3) para tablas
-    // de clase `table-listado` únicamente. No tocar `.table-listado-equipaje` porque
-    // en esa vista combinamos ID y teléfono en una sola celda con HTML interno.
-    function normalizeIds() {
-        const selectors = ['.table-listado tbody td:nth-child(3)'];
-        selectors.forEach(sel => {
-            const cells = printArea.querySelectorAll(sel);
-            cells.forEach(td => {
-                // Conserva el contenido pero elimina todos los puntos '.'
-                const raw = td.textContent || '';
-                const normalized = raw.replace(/\./g, '').replace(/\s+/g, ' ').trim();
-                td.textContent = normalized;
-            });
-        });
     }
 
     reportSelector.addEventListener('change', (e) => loadReport(e.target.value));
     loadReport(reportSelector.value); // Carga inicial
-
-    // Print handler: open browser print dialog (no local print agent)
-    // Simple print handler: open browser print dialog (no local print agent)
-    window.handleConfirmAndPrint = function() {
-        window.print();
-    };
 });
