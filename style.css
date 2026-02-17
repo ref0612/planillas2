@@ -112,7 +112,12 @@ select {
 .print-canvas .table-listado th:nth-child(1),
 .print-canvas .table-listado td:nth-child(1) { width: 5%;  text-align: center; }
 .print-canvas .table-listado th:nth-child(2),
-.print-canvas .table-listado td:nth-child(2) { width: 30%; }
+.print-canvas .table-listado td:nth-child(2) {
+    width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .print-canvas .table-listado th:nth-child(3),
 .print-canvas .table-listado td:nth-child(3) { width: 25%; font-weight: bold; }
 .print-canvas .table-listado th:nth-child(4),
@@ -205,8 +210,8 @@ select {
 
     .fw-bold  { font-weight: bold !important; }
     .bg-gray  { background: none !important; }
-    .text-end { text-align: right !important; }
-    .text-center, [align="center"] { text-align: center !important; }
+    .text-end { text-align: left !important; }
+    .text-center, [align="left"] { text-align: center !important; }
 
     img.print-logo {
         max-width: 100% !important;
@@ -238,7 +243,12 @@ select {
     .table-listado th:nth-child(1),
     .table-listado td:nth-child(1) { width: 5mm !important;  text-align: center !important; }
     .table-listado th:nth-child(2),
-    .table-listado td:nth-child(2) { width: 23mm !important; }
+    .table-listado td:nth-child(2) {
+        width: 23mm !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
     .table-listado th:nth-child(3),
     .table-listado td:nth-child(3) { width: 17mm !important; font-weight: bold !important; }
     .table-listado th:nth-child(4),

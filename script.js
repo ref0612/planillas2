@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <tfoot>
                         <tr class="fw-bold">
                             <td colspan="4" align="right">Monto Total:</td>
-                            <td align="center">$2.008.425</td>
+                            <td align="left">$2.008.425</td>
                         </tr>
                     </tfoot>
                 </table>
