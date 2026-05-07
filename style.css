@@ -61,11 +61,8 @@ select {
 
 /* =============================================
    ESTILOS DE PANTALLA PARA TABLAS
-   Columnas definidas también fuera de @print
-   para que el front no se rompa.
 ============================================= */
 
-/* Tabla general en pantalla */
 .print-canvas table {
     width: 100%;
     border-collapse: collapse;
@@ -93,8 +90,8 @@ select {
     text-align: center;
 }
 
-.print-canvas .fw-bold  { font-weight: bold; }
-.print-canvas .bg-gray  { background: none; }
+.print-canvas .fw-bold { font-weight: bold; }
+.print-canvas .bg-gray { background: none; }
 
 /* DIAGRAMA — anchos en pantalla */
 .print-canvas .table-diagram th:nth-child(1),
@@ -119,7 +116,11 @@ select {
     white-space: nowrap;
 }
 .print-canvas .table-listado th:nth-child(3),
-.print-canvas .table-listado td:nth-child(3) { width: 25%; font-weight: bold; }
+.print-canvas .table-listado td:nth-child(3) {
+    width: 25%;
+    font-weight: bold;
+    white-space: nowrap;
+}
 .print-canvas .table-listado th:nth-child(4),
 .print-canvas .table-listado td:nth-child(4) { width: 22%; }
 .print-canvas .table-listado th:nth-child(5),
@@ -127,155 +128,91 @@ select {
 
 
 /* =============================================
-   IMPRESIÓN TÉRMICA 80mm
+   IMPRESIÓN TÉRMICA 80mm — BIXOLON SRP-330
+   Área útil real: ~68mm (margen hardware ~6mm)
+   Configurar Chrome: Márgenes=Ninguno, Escala=100%
 ============================================= */
+
 @media print {
     @page {
         size: 80mm auto;
-        margin: 0mm;
+        margin: 0;
     }
 
     html, body {
         margin: 0 !important;
         padding: 0 !important;
-        background: none !important;
         width: 80mm !important;
-        max-width: 80mm !important;
+        background: #fff !important;
+        display: flex !important;
+        justify-content: flex-start !important; /* Fuerza el inicio a la izquierda */
     }
 
     .no-print { display: none !important; }
 
     .main-container {
-        padding: 0 !important;
         margin: 0 !important;
-        background: none !important;
+        padding: 0 !important;
+        width: 100% !important;
     }
 
-    /* Alineado a la izquierda absoluta para neutralizar el margen
-       hardware del driver de impresora térmica */
     .print-canvas {
-        width: 76mm !important;
-        max-width: 76mm !important;
-        margin: 0 0 0 0 !important;   /* flush left — sin auto */
-        padding: 0 0 0 0.5mm !important;
+        width: 68mm !important; /* Ancho reducido para garantizar que nada se corte */
+        margin: 0 !important;
+        padding: 0 !important;
         box-shadow: none !important;
-        overflow: hidden !important;
+        display: block !important;
     }
 
     .print-canvas,
     .print-canvas * {
-        font-family: Arial, 'Helvetica Neue', sans-serif !important;
-        font-size: 7.5pt !important;
-        line-height: 1.15 !important;
+        font-family: Arial, sans-serif !important;
+        font-size: 8.5pt !important; 
+        line-height: 1.1 !important;
         color: #000 !important;
-        background: none !important;
-        box-sizing: border-box !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
     }
 
     table {
         width: 100% !important;
         border-collapse: collapse !important;
         table-layout: fixed !important;
+        margin: 0 !important;
     }
 
     th, td {
+        border: 0.2mm solid #000 !important;
+        padding: 0.5mm 0.2mm !important;
+        text-align: center !important; 
         vertical-align: middle !important;
-        padding: 0.5mm 0.6mm !important;
-        overflow-wrap: break-word !important;
-        word-break: break-word !important;
-        white-space: normal !important;
-        background: none !important;
-    }
-
-    .table-bordered th,
-    .table-bordered td {
-        border: 0.5pt solid #000 !important;
-    }
-
-    .table-bordered thead th {
-        font-weight: bold !important;
-        border-bottom: 1pt solid #000 !important;
-        text-align: center !important;
-        vertical-align: middle !important;
-        background: none !important;
-    }
-
-    tr, th, td,
-    thead tr, tbody tr, tfoot tr {
-        background: none !important;
-        background-color: transparent !important;
-    }
-
-    .fw-bold  { font-weight: bold !important; }
-    .bg-gray  { background: none !important; }
-    .text-end { text-align: left !important; }
-    .text-center, [align="left"] { text-align: center !important; }
-
-    img.print-logo {
-        max-width: 100% !important;
-        height: auto;
-        display: block;
-        margin: 0.4mm auto 1mm !important;
-        max-height: 10mm !important;
-    }
-
-    /* =============================================
-       DIAGRAMA DE PASAJES — 76mm
-       No=5  Boleto=19  Embarque=19  Destino=16  Valor=17
-    ============================================= */
-    .table-diagram th:nth-child(1),
-    .table-diagram td:nth-child(1) { width: 5mm !important;  text-align: center !important; }
-    .table-diagram th:nth-child(2),
-    .table-diagram td:nth-child(2) { width: 19mm !important; font-weight: bold !important; }
-    .table-diagram th:nth-child(3),
-    .table-diagram td:nth-child(3) { width: 19mm !important; }
-    .table-diagram th:nth-child(4),
-    .table-diagram td:nth-child(4) { width: 16mm !important; }
-    .table-diagram th:nth-child(5),
-    .table-diagram td:nth-child(5) { width: 17mm !important; text-align: left !important; font-weight: bold !important; }
-
-    /* =============================================
-       LISTADO DE PASAJEROS — 76mm
-       No=5  Nombre=23  ID=17  Teléfono=16  Equipaje=15
-    ============================================= */
-    .table-listado th:nth-child(1),
-    .table-listado td:nth-child(1) { width: 5mm !important;  text-align: center !important; }
-    .table-listado th:nth-child(2),
-    .table-listado td:nth-child(2) {
-        width: 23mm !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
         white-space: nowrap !important;
+        overflow: hidden !important;
     }
-    .table-listado th:nth-child(3),
+
+    /* =============================================
+       DISTRIBUCIÓN RECALIBRADA (Total exacto 68mm)
+       ============================================= */
+
+    /* # - 4mm (Reducido al mínimo posible) */
+    .table-listado th:nth-child(1), 
+    .table-listado td:nth-child(1) { width: 4mm !important; }
+
+    /* Nombre - 20mm (Cedemos 3mm para salvar el RUT) */
+    .table-listado th:nth-child(2), 
+    .table-listado td:nth-child(2) { 
+        width: 20mm !important; 
+        text-align: left !important; 
+        padding-left: 0.5mm !important;
+    }
+
+    /* ID - 17mm (Recupera sus 3mm para que quepa todo el número en negrita) */
+    .table-listado th:nth-child(3), 
     .table-listado td:nth-child(3) { width: 17mm !important; font-weight: bold !important; }
-    .table-listado th:nth-child(4),
-    .table-listado td:nth-child(4) { width: 16mm !important; }
-    .table-listado th:nth-child(5),
-    .table-listado td:nth-child(5) { width: 15mm !important; }
 
-    tfoot td {
-        border-top: 1pt solid #000 !important;
-        font-weight: bold !important;
-        padding-top: 0.8mm !important;
-        background: none !important;
-    }
+    /* Teléfono - 15mm (Perfecto para 9 dígitos) */
+    .table-listado th:nth-child(4), 
+    .table-listado td:nth-child(4) { width: 15mm !important; }
 
-    .summary-table td {
-        padding: 0.4mm 0.6mm !important;
-    }
-
-    /* Ajuste específico: dar más espacio al campo 'Valor' en la fila Monto Total */
-    .table-diagram tfoot tr.fw-bold td[colspan="4"] {
-        width: 52mm !important; /* reduce un poco el espacio de la etiqueta */
-        text-align: left !important;
-        padding-right: 0.6mm !important;
-    }
-    .table-diagram tfoot tr.fw-bold td:last-child {
-        width: 24mm !important; /* asigna más espacio al monto */
-        text-align: left !important;
-        padding-left: 0.2mm !important;
-    }
+    /* Equipaje - 12mm */
+    .table-listado th:nth-child(5), 
+    .table-listado td:nth-child(5) { width: 12mm !important; }
 }

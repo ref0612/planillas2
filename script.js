@@ -26,83 +26,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="fw-bold" style="padding: 2px; border: 1px solid #000; border-bottom: none;">Cuadro de reservas</div>
                 <table class="table-bordered table-listado" style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nombre</th>
-                            <th>ID</th>
-                            <th>Teléfono</th>
-                            <th>Equipaje</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1</td><td>Eduardo antonio castillo</td><td>12.943.995-5</td><td>949486748</td><td></td></tr>
-                        <tr><td>2</td><td>Nelly montecinos</td><td>13131829-4</td><td>984621845</td><td></td></tr>
-                        <tr><td>3</td><td>Sergio arredondo</td><td>12569501-9</td><td>958738380</td><td></td></tr>
-                        <tr><td>3</td><td>Jennifer cortes</td><td>AY607634</td><td>982239906</td><td></td></tr>
-                        <tr><td>3</td><td>Valentina cerda</td><td>18.994.988-k</td><td>931037273</td><td></td></tr>
-                        <tr><td>3</td><td>Andrea ahumada</td><td>16.469.733-9</td><td>982658394</td><td></td></tr>
-                        <tr><td>4</td><td>Victor ignacio crowford</td><td>18.236.911-K</td><td>995146708</td><td></td></tr>
-                        <tr><td>5</td><td>Benito egaña</td><td>17.363.370-k</td><td>569762112</td><td></td></tr>
-                        <tr><td>6</td><td>Franco fernandini ramirez</td><td>20.850.722-2</td><td>962818997</td><td></td></tr>
-                        <tr><td>7</td><td>Pedro figueroa</td><td>15.924.304-4</td><td>961766736</td><td></td></tr>
-                        <tr><td>8</td><td>Daniel lopez lara</td><td>21.311.886-2</td><td>947608480</td><td></td></tr>
-                        <tr><td>8</td><td>Braulio braulio</td><td>17.046.522-9</td><td>982750470</td><td></td></tr>
-                        <tr><td>9</td><td>Marcelo álvarez</td><td>13.744.076-8</td><td>926411523</td><td></td></tr>
-                        <tr><td>10</td><td>Hernan alexis zepeda</td><td>19.267.018-7</td><td>988487851</td><td></td></tr>
-                        <tr><td>10</td><td>Javiera ramirez inostroza</td><td>20.038.389-3</td><td>982541695</td><td></td></tr>
-                        <tr><td>11</td><td>Fabián ramirez</td><td>19.205.472-9</td><td>940612477</td><td></td></tr>
-                        <tr><td>12</td><td>Jean paez</td><td>18.520.417-0</td><td>976439373</td><td></td></tr>
-                        <tr><td>12</td><td>Natalia torres</td><td>27.678.688-1</td><td>965408454</td><td></td></tr>
-                        <tr><td>13</td><td>Marco jara</td><td>17.590.019-5</td><td>963155255</td><td></td></tr>
-                        <tr><td>13</td><td>Braulio escobar</td><td>10.185.612-7</td><td>987755260</td><td></td></tr>
-                        <tr><td>14</td><td>Alvaro guzman</td><td>13.987.788-8</td><td>948540982</td><td></td></tr>
-                        <tr><td>15</td><td>Gabriel molina</td><td>17.567.667-8</td><td>948540982</td><td></td></tr>
-                        <tr><td>16</td><td>David madrid</td><td>16106843-8</td><td>997446556</td><td></td></tr>
-                        <tr><td>17</td><td>Jimmy polanco rojas</td><td>17.016.647-7</td><td>964648240</td><td></td></tr>
-                        <tr><td>18</td><td>Mauricio suenzen</td><td>15.750.634-K</td><td>971952246</td><td></td></tr>
-                        <tr><td>19</td><td>Erick vera</td><td>12823335-0</td><td>934096905</td><td></td></tr>
-                        <tr><td>20</td><td>Francisco menares</td><td>15.100.258-7</td><td>983349766</td><td></td></tr>
-                        <tr><td>21</td><td>Daniel mellado</td><td>18.940.221-k</td><td>937040967</td><td></td></tr>
-                        <tr><td>21</td><td>Kriss alarcon</td><td>22.867.919-4</td><td>945306928</td><td></td></tr>
-                        <tr><td>22</td><td>Gonzalo cienfuegos</td><td>18.355.063-2</td><td>979047607</td><td></td></tr>
-                        <tr><td>23</td><td>Brian ossandon</td><td>18.688.929-0</td><td>974904576</td><td></td></tr>
-                        <tr><td>23</td><td>Caterine pablaza</td><td>17276148-8</td><td>985042133</td><td></td></tr>
-                        <tr><td>24</td><td>Nelson barraza</td><td>15.494.285-8</td><td>977595913</td><td></td></tr>
-                        <tr><td>24</td><td>Gisel ramos</td><td>18756992-3</td><td>971501594</td><td></td></tr>
-                        <tr><td>25</td><td>Patricio araya</td><td>18.827.313-0</td><td>990075541</td><td></td></tr>
-                        <tr><td>25</td><td>Francisco opazo</td><td>10381465-0</td><td>995794240</td><td></td></tr>
-                        <tr><td>26</td><td>Alfonso morales</td><td>16015745-3</td><td>974545470</td><td></td></tr>
-                        <tr><td>27</td><td>Luis angel</td><td>16.597.512-k</td><td>985071327</td><td></td></tr>
-                        <tr><td>28</td><td>Victor gil</td><td>16.307.003-0</td><td>961559050</td><td></td></tr>
-                        <tr><td>29</td><td>Raul alday</td><td>11.939.560-7</td><td>985153645</td><td></td></tr>
-                        <tr><td>30</td><td>Alejandro vergara araya</td><td>16595497-1</td><td>961990307</td><td></td></tr>
-                        <tr><td>31</td><td>Claudia elena morales</td><td>13.107.726-2</td><td>994526238</td><td></td></tr>
-                        <tr><td>32</td><td>Yolanda orellana</td><td>4.588.589-5</td><td>977759686</td><td></td></tr>
-                        <tr><td>32</td><td>Jorge barrera</td><td>12.805.181-3</td><td>920414827</td><td></td></tr>
-                        <tr><td>33</td><td>Ana orellana</td><td>5.685.694-3</td><td>977759686</td><td></td></tr>
-                        <tr><td>33</td><td>Jhon varas</td><td>19.506.681-7</td><td>957005897</td><td></td></tr>
-                        <tr><td>34</td><td>David madrid</td><td>16106843-8</td><td>997446556</td><td></td></tr>
-                        <tr><td>35</td><td>Victor orellana</td><td>6.940.566-5</td><td>977759686</td><td></td></tr>
-                        <tr><td>35</td><td>Francisco carrizo</td><td>18.386.180-8</td><td>948024026</td><td></td></tr>
-                        <tr><td>35</td><td>Melany diaz</td><td>20.911.864-5</td><td>974336628</td><td></td></tr>
-                        <tr><td>36</td><td>Mirta de la barra</td><td>7.454.240-9</td><td>977759686</td><td></td></tr>
-                        <tr><td>36</td><td>Jahir lillo</td><td>16.443.196-7</td><td>928700686</td><td></td></tr>
-                        <tr><td>37</td><td>Juan arenas</td><td>15.714.108-2</td><td>958906490</td><td></td></tr>
-                        <tr><td>38</td><td>Miriam orellana</td><td>7.096.748-0</td><td>977759686</td><td></td></tr>
-                        <tr><td>38</td><td>Valeska donoso</td><td>17.643.852-5</td><td>999511248</td><td></td></tr>
-                        <tr><td>38</td><td>Sergio alvarado</td><td>14.211.158-6</td><td>998359084</td><td></td></tr>
-                        <tr><td>39</td><td>Isabel orellana</td><td>7.707.772-3</td><td>977759686</td><td></td></tr>
-                        <tr><td>39</td><td>Vladimir aguilera</td><td>10.898.937-8</td><td>958835528</td><td></td></tr>
-                        <tr><td>40</td><td>Guillermo arancibia</td><td>13.175.365-9</td><td>977077868</td><td></td></tr>
-                        <tr><td>40</td><td>Francisco mena</td><td>6.167.918-9</td><td>977759686</td><td></td></tr>
-                        <tr><td>40</td><td>Maximiliano muñoz</td><td>22.636.868-k</td><td>978344019</td><td></td></tr>
-                        <tr><td>41</td><td>Daniel rozas</td><td>19.180.820-7</td><td>940941350</td><td></td></tr>
-                        <tr><td>42</td><td>Cristian berrios</td><td>13.172.790-9</td><td>976166777</td><td></td></tr>
-                        <tr><td>42</td><td>Leonardo cortes</td><td>13.701.013-5</td><td>962230172</td><td></td></tr>
-                        <tr><td>43</td><td>Betsabe anania</td><td>19.024.368-0</td><td>933218518</td><td></td></tr>
-                    </tbody>
-                </table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>ID</th>
+            <th>Teléfono</th>
+            <th>Equipaje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>Eduardo antonio castillo</td><td>12943995-5</td><td>949486748</td><td></td></tr>
+        <tr><td>2</td><td>Nelly montecinos</td><td>13131829-4</td><td>984621845</td><td></td></tr>
+        <tr><td>3</td><td>Sergio arredondo</td><td>12569501-9</td><td>958738380</td><td></td></tr>
+        <tr><td>3</td><td>Jennifer cortes</td><td>AY607634</td><td>982239906</td><td></td></tr>
+        <tr><td>3</td><td>Valentina cerda</td><td>18994988-k</td><td>931037273</td><td></td></tr>
+        <tr><td>3</td><td>Andrea ahumada</td><td>16469733-9</td><td>982658394</td><td></td></tr>
+        <tr><td>4</td><td>Victor ignacio crowford</td><td>18236911-K</td><td>995146708</td><td></td></tr>
+        <tr><td>5</td><td>Benito egaña</td><td>17363370-k</td><td>569762112</td><td></td></tr>
+        <tr><td>6</td><td>Franco fernandini ramirez</td><td>20850722-2</td><td>962818997</td><td></td></tr>
+        <tr><td>7</td><td>Pedro figueroa</td><td>15924304-4</td><td>961766736</td><td></td></tr>
+        <tr><td>8</td><td>Daniel lopez lara</td><td>21311886-2</td><td>947608480</td><td></td></tr>
+        <tr><td>8</td><td>Braulio braulio</td><td>17046522-9</td><td>982750470</td><td></td></tr>
+        <tr><td>9</td><td>Marcelo álvarez</td><td>13744076-8</td><td>926411523</td><td></td></tr>
+        <tr><td>10</td><td>Hernan alexis zepeda</td><td>19267018-7</td><td>988487851</td><td></td></tr>
+        <tr><td>10</td><td>Javiera ramirez inostroza</td><td>20038389-3</td><td>982541695</td><td></td></tr>
+        <tr><td>11</td><td>Fabián ramirez</td><td>19205472-9</td><td>940612477</td><td></td></tr>
+        <tr><td>12</td><td>Jean paez</td><td>18520417-0</td><td>976439373</td><td></td></tr>
+        <tr><td>12</td><td>Natalia torres</td><td>27678688-1</td><td>965408454</td><td></td></tr>
+        <tr><td>13</td><td>Marco jara</td><td>17590019-5</td><td>963155255</td><td></td></tr>
+        <tr><td>13</td><td>Braulio escobar</td><td>10185612-7</td><td>987755260</td><td></td></tr>
+        <tr><td>14</td><td>Alvaro guzman</td><td>13987788-8</td><td>948540982</td><td></td></tr>
+        <tr><td>15</td><td>Gabriel molina</td><td>17567667-8</td><td>948540982</td><td></td></tr>
+        <tr><td>16</td><td>David madrid</td><td>16106843-8</td><td>997446556</td><td></td></tr>
+        <tr><td>17</td><td>Jimmy polanco rojas</td><td>17016647-7</td><td>964648240</td><td></td></tr>
+        <tr><td>18</td><td>Mauricio suenzen</td><td>15750634-K</td><td>971952246</td><td></td></tr>
+        <tr><td>19</td><td>Erick vera</td><td>12823335-0</td><td>934096905</td><td></td></tr>
+        <tr><td>20</td><td>Francisco menares</td><td>15100258-7</td><td>983349766</td><td></td></tr>
+        <tr><td>21</td><td>Daniel mellado</td><td>18940221-k</td><td>937040967</td><td></td></tr>
+        <tr><td>21</td><td>Kriss alarcon</td><td>22867919-4</td><td>945306928</td><td></td></tr>
+        <tr><td>22</td><td>Gonzalo cienfuegos</td><td>18355063-2</td><td>979047607</td><td></td></tr>
+        <tr><td>23</td><td>Brian ossandon</td><td>18688929-0</td><td>974904576</td><td></td></tr>
+        <tr><td>23</td><td>Caterine pablaza</td><td>17276148-8</td><td>985042133</td><td></td></tr>
+        <tr><td>24</td><td>Nelson barraza</td><td>15494285-8</td><td>977595913</td><td></td></tr>
+        <tr><td>24</td><td>Gisel ramos</td><td>18756992-3</td><td>971501594</td><td></td></tr>
+        <tr><td>25</td><td>Patricio araya</td><td>18827313-0</td><td>990075541</td><td></td></tr>
+        <tr><td>25</td><td>Francisco opazo</td><td>10381465-0</td><td>995794240</td><td></td></tr>
+        <tr><td>26</td><td>Alfonso morales</td><td>16015745-3</td><td>974545470</td><td></td></tr>
+        <tr><td>27</td><td>Luis angel</td><td>16597512-k</td><td>985071327</td><td></td></tr>
+        <tr><td>28</td><td>Victor gil</td><td>16307003-0</td><td>961559050</td><td></td></tr>
+        <tr><td>29</td><td>Raul alday</td><td>11939560-7</td><td>985153645</td><td></td></tr>
+        <tr><td>30</td><td>Alejandro vergara araya</td><td>16595497-1</td><td>961990307</td><td></td></tr>
+        <tr><td>31</td><td>Claudia elena morales</td><td>13107726-2</td><td>994526238</td><td></td></tr>
+        <tr><td>32</td><td>Yolanda orellana</td><td>4588589-5</td><td>977759686</td><td></td></tr>
+        <tr><td>32</td><td>Jorge barrera</td><td>12805181-3</td><td>920414827</td><td></td></tr>
+        <tr><td>33</td><td>Ana orellana</td><td>5685694-3</td><td>977759686</td><td></td></tr>
+        <tr><td>33</td><td>Jhon varas</td><td>19506681-7</td><td>957005897</td><td></td></tr>
+        <tr><td>34</td><td>David madrid</td><td>16106843-8</td><td>997446556</td><td></td></tr>
+        <tr><td>35</td><td>Victor orellana</td><td>6940566-5</td><td>977759686</td><td></td></tr>
+        <tr><td>35</td><td>Francisco carrizo</td><td>18386180-8</td><td>948024026</td><td></td></tr>
+        <tr><td>35</td><td>Melany diaz</td><td>20911864-5</td><td>974336628</td><td></td></tr>
+        <tr><td>36</td><td>Mirta de la barra</td><td>7454240-9</td><td>977759686</td><td></td></tr>
+        <tr><td>36</td><td>Jahir lillo</td><td>16443196-7</td><td>928700686</td><td></td></tr>
+        <tr><td>37</td><td>Juan arenas</td><td>15714108-2</td><td>958906490</td><td></td></tr>
+        <tr><td>38</td><td>Miriam orellana</td><td>7096748-0</td><td>977759686</td><td></td></tr>
+        <tr><td>38</td><td>Valeska donoso</td><td>17643852-5</td><td>999511248</td><td></td></tr>
+        <tr><td>38</td><td>Sergio alvarado</td><td>14211158-6</td><td>998359084</td><td></td></tr>
+        <tr><td>39</td><td>Isabel orellana</td><td>7707772-3</td><td>977759686</td><td></td></tr>
+        <tr><td>39</td><td>Vladimir aguilera</td><td>10898937-8</td><td>958835528</td><td></td></tr>
+        <tr><td>40</td><td>Guillermo arancibia</td><td>13175365-9</td><td>977077868</td><td></td></tr>
+        <tr><td>40</td><td>Francisco mena</td><td>6167918-9</td><td>977759686</td><td></td></tr>
+        <tr><td>40</td><td>Maximiliano muñoz</td><td>22636868-k</td><td>978344019</td><td></td></tr>
+        <tr><td>41</td><td>Daniel rozas</td><td>19180820-7</td><td>940941350</td><td></td></tr>
+        <tr><td>42</td><td>Cristian berrios</td><td>13172790-9</td><td>976166777</td><td></td></tr>
+        <tr><td>42</td><td>Leonardo cortes</td><td>13701013-5</td><td>962230172</td><td></td></tr>
+        <tr><td>43</td><td>Betsabe anania</td><td>19024368-0</td><td>933218518</td><td></td></tr>
+    </tbody>
+</table>
 
                 <div style="margin-top: 12px;">
                     <div class="fw-bold" style="border-bottom: 1px solid black; margin-bottom: 4px;">Puntos de embarque:</div>
